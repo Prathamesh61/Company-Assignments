@@ -11,7 +11,7 @@ const UserDetail = () => {
     })
     console.log(SingleUser)
     return (
-        <div>UserDetail</div>
+        <div>{SingleUser.username}</div>
     )
 }
 
