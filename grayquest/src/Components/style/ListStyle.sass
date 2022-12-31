@@ -1,3 +1,20 @@
+@mixin respond($breakpoint)
+    @if($breakpoint == small)
+        @media (max-width: 480px)
+            @content
+
+    @if($breakpoint == medium)
+        @media (max-width: 768px)
+            @content
+
+    @if($breakpoint == large)
+        @media (max-width: 1024px)
+            @content
+
+    @if($breakpoint == xlarge)
+        @media (min-width: 1200px)
+            @content
+
 .list_style
     display: flex
     flex-direction: column
@@ -5,9 +22,36 @@
     margin: auto
     h1
         text-align: center
+        @include respond(small)
+            width: 100%
+        @include respond(medium)
+            width: 100%
+        @include respond(large)
+            width: 100%
 .grid_style
     display: grid
     width: 80%
+    align: center
     grid-template-columns: repeat(auto-fit,minmax(380px,max-content))
     margin: auto
     gap: 20px
+
+    @include respond(small)
+        width: 100%
+        grid-template-columns: repeat(auto-fit,minmax(300px,max-content))
+        margin: auto
+
+    @include respond(medium)
+        width: 100%
+        grid-template-columns: repeat(auto-fit,minmax(300px,max-content))
+        margin: auto
+
+    @include respond(large)
+        width: 100%
+        grid-template-columns: repeat(auto-fit,minmax(380px,max-content))
+        margin: auto
+
+    @include respond(xlarge)
+        width: 80%
+        grid-template-columns: repeat(auto-fit,minmax(380px,max-content))
+        margin: auto
