@@ -1,9 +1,55 @@
+@mixin respond($breakpoint)
+    @if($breakpoint == small)
+        @media (max-width: 480px)
+            @content
+
+    @if($breakpoint == medium)
+        @media (max-width: 768px)
+            @content
+
+    @if($breakpoint == large)
+        @media (max-width: 1024px)
+            @content
+
+    @if($breakpoint == xlarge)
+        @media (min-width: 1200px)
+            @content
+
 .single_card_div
     width: 50%
     margin: auto
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
     padding: 40px
     border-radius: 10px
+    @include respond(small)
+        width: 100%
+        margin: auto
+        padding: 10px
+
+    @include respond(medium)
+        width: 98%
+        margin: auto
+        padding: 15px
+
+    @include respond(large)
+        width: 80%
+        margin: auto
+        padding: 15px
+
+    @include respond(xlarge)
+        width: 50%
+        margin: auto
+        padding: 15px
+
 .main_card_div
+    @include respond(small)
+        width: 100%
+        margin: auto
+    @include respond(medium)
+        width: 100%
+        margin: auto
+    @include respond(large)
+        width: 100%
+        margin: auto
     h1
         text-align: center
