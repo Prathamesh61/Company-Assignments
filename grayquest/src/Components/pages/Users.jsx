@@ -1,18 +1,22 @@
 import React from 'react'
 import { useGetUsersQuery } from '../../Redux/UserApi'
-import List from '../templates/List/List';
-import Button from '../UI/atoms/Button/Button';
-import H1 from '../UI/atoms/H1/H1';
-import P from '../UI/atoms/P/P';
+import List from '../templates/List';
 import Body from '../UI/molecules/Body/Body';
-import Header from '../UI/molecules/Header/Header';
 
 const Users = () => {
-    const { data, error, isLoading, isError, isSuccess } = useGetUsersQuery();
+    const { data, isLoading, isError, isSuccess } = useGetUsersQuery();
     console.log(data);
     return (
         <div>
-            <List data={data} />
+            {
+                isLoading && (<h1>Loading...</h1>)
+            }
+            {
+                isError && (<h1>Error...</h1>)
+            }
+            {
+                isSuccess && (<List data={data} />)
+            }
         </div>
     )
 }

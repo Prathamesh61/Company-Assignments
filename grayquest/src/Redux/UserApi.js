@@ -31,8 +31,14 @@ const UserApi = createApi({
                     method: 'get'
                 })
             }),
+            getSingleUser: build.query({
+                query: (id) => ({
+                    url: `/users/${id}`,
+                    method: 'get'
+                })
+            })
         }
     },
 })
 export default UserApi;
-export const { useGetUsersQuery } = UserApi;
+export const { useGetUsersQuery, useGetSingleUserQuery } = UserApi;
