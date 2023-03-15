@@ -6,7 +6,7 @@ import UserDetailCard from '../UI/organisms/UserDetailCard/UserDetailCard'
 import "../style/SingleCardStyle.sass"
 import H1 from '../UI/atoms/H1/H1'
 const SingleCard = ({ data }) => {
-    console.log(data)
+    console.log(data.address.city)
     return (
         <div className='main_card_div'>
             <H1 content={"User Details"} />
@@ -15,7 +15,17 @@ const SingleCard = ({ data }) => {
                 <AddressCard address={data.address} />
                 <CompanyCard company={data.company} />
             </div>
-        </div>
+            <iframe
+                style={{ margin: 'auto', width: "100%" }}
+                title='map'
+                width="600"
+                height="450"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAh1M1-YKtiXPChZ7uab63DhsMQtXQKkrA&q=${data.address.city}&zoom=18&maptype=satellite`}>
+            </iframe>
+        </div >
     )
 }
 
